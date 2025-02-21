@@ -1,0 +1,48 @@
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+}
+
+tr {
+    border-radius: 0.5pc;
+}
+td {
+    border: 10px solid #efb539;
+
+    padding: 10px;
+}
+th {
+    background-color: #fff;
+
+    border: 10px solid #efb539;
+    text-align: center;
+}
+.nombre {
+    background-color: #fff;
+
+    width: 75%;
+    text-align: start;
+}
+.precio {
+    background-color: #fff;
+    width: auto;
+    text-align: center;
+}
+table {
+    width: 70%;
+    max-width: 800px;
+    margin-inline: auto;
+    box-shadow: 0 0 10px black;
+}
+.listaPrecio {
+    text-align: center;
+    width: 70%;
+    margin: 1rem;
+    max-width: 800px;
+    margin-inline: auto;
+}
+.mainPrecio {
+    background-color: beige;
+    padding-bottom: 4rem;
+}
