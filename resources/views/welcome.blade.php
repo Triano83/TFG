@@ -35,7 +35,7 @@
         </div>
     </header>
     <main>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 ">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3 mb-4 ">
             <div class="card m-3" style="width: 18rem;">
                 <img src="{{ asset('asset/img/protesis.jpg') }}" class="card-img-top" alt="dentadura">
                 <div class="card-body">

@@ -2,6 +2,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100dvh;
+    background: linear-gradient(to bottom, #f7f7f7, #ccc, #aaa);
 }
 
 tr {
@@ -25,7 +26,6 @@ th {
     text-align: start;
 }
 .precio {
-    background-color: #fff;
     width: auto;
     text-align: center;
 }
@@ -43,6 +43,24 @@ table {
     margin-inline: auto;
 }
 .mainPrecio {
-    background-color: beige;
     padding-bottom: 4rem;
+}
+
+header {
+    background: linear-gradient(to bottom, #87ceeb, #78a8d0, #6ca2f3);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px black;
+}
+footer {
+    background: linear-gradient(to bottom, #87ceeb, #78a8d0, #6ca2f3);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px black;
 }
