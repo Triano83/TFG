@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\clinica;
+use App\Models\Dato;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
-
-
-class ClinicaController extends Controller
+class DatoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,20 +34,23 @@ class ClinicaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
+            'empresa' => 'required',
             'nombre' => 'required',
+            'apellidos' => 'required',
             'direccion' => 'required',
-            'NIF' => 'required',
-            'email' => 'required|email',
             'telefono' => 'required',
-
+            'email' => 'required|email|unique:datos,email',
+            'DNI' => 'required|unique:datos,DNI',
         ]);
-        Clinica::create($request->all());
-        return redirect()->route('clinica.index')
-            ->with('success', 'Clinica created successfully.');
+
+        Dato::create($request->all());
+
+        return redirect()->route('datos.index')->with('success', 'Datos agregados correctamente.');
     }
+
 
     /**
      * Display the specified resource.
@@ -57,9 +58,9 @@ class ClinicaController extends Controller
     public function show()
     {
         if (Auth::check() && Auth::user()->admin) {
-            $clinicas = Clinica::all();
+            $datos = Dato::all();
             $isAdmin = Auth::user()->admin; // Definir la variable antes de enviarla a la vista
-            return view('clinicas.show', compact('clinicas', 'isAdmin')); // Pasar ambas variables
+            return view('datos.show', compact('datos', 'isAdmin')); // Pasar ambas variables
         } else {
             return redirect('/')->with('error', 'Acceso denegado.');
         }
@@ -69,7 +70,7 @@ class ClinicaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(clinica $clinica)
+    public function edit(dato $dato)
     {
         //
     }
@@ -77,35 +78,31 @@ class ClinicaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, clinica $clinica)
+    public function update(Request $request, Dato $dato)
     {
         $request->validate([
+            'empresa' => 'required',
             'nombre' => 'required',
+            'apellidos' => 'required',
             'direccion' => 'required',
-            'NIF' => 'required',
-            'email' => 'required|email',
             'telefono' => 'required',
+            'email' => 'required|email',
+            'DNI' => 'required',
         ]);
 
-        $clinica->update([
-            'nombre' => $request->nombre,
-            'direccion' => $request->direccion,
-            'NIF' => $request->NIF,
-            'email' => $request->email,
-            'telefono' => $request->telefono,
-        ]);
+        $dato->update($request->all());
 
-        return redirect()->route('clinicas.show')->with('success', 'Clínica actualizada correctamente.');
+        return redirect()->route('datos.show')->with('success', 'Datos actualizados correctamente.');
     }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clinica $clinica)
+    public function destroy(Dato $dato)
     {
-        $clinica->delete();
-        return redirect()->route('clinicas.show')->with('success', 'Clínica eliminada correctamente.');
+        $dato->delete();
+        return redirect()->route('datos.show')->with('success', 'Datos eliminados correctamente.');
     }
 
 }

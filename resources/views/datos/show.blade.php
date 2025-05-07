@@ -5,34 +5,34 @@
     <main>
 
         @if (isset($isAdmin) && $isAdmin)
-            @if ($clinicas->isEmpty())
-                <p class="text-muted">No se han encontrado Clinicas.</p>
+            @if ($datos->isEmpty())
+                <p class="text-muted">No se han encontrado datos personales.</p>
             @else
                 <div class="text-center mb-3">
                     <a href="{{ route('home') }}" class="btn btn-dark">Volver al menú</a>
                 </div>
-                @foreach ($clinicas as $clinica)
+                @foreach ($datos as $dato)
                     <div class="card m-2 shadow-sm">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h5 class="card-title mb-0">
-                                    <a href="{{ route('clinicas.show', $clinica->id) }}" class="text-dark text-decoration-none">
-                                        {{ $clinica->nombre }}
+                                    <a href="{{ route('datos.show', $dato->id) }}" class="text-dark text-decoration-none">
+                                        {{ $dato->nombre }}
                                     </a>
                                 </h5>
                             </div>
                             <div>
-                                <button class="btn btn-dark m-1 editClinicaBtn" data-bs-toggle="modal"
-                                    data-bs-target="#editClinicaModal" data-id="{{ $clinica->id }}"
-                                    data-nombre="{{ $clinica->nombre }}" data-direccion="{{ $clinica->direccion }}"
-                                    data-nif="{{ $clinica->NIF }}" data-email="{{ $clinica->email }}"
-                                    data-telefono="{{ $clinica->telefono }}">
+                                <button class="btn btn-dark m-1 editDatoBtn" data-bs-toggle="modal" data-bs-target="#editDatoModal"
+                                    data-id="{{ $dato->id }}" data-empresa="{{ $dato->empresa }}" data-nombre="{{ $dato->nombre }}"
+                                    data-apellidos="{{ $dato->apellidos }}" data-direccion="{{ $dato->direccion }}"
+                                    data-telefono="{{ $dato->telefono }}" data-email="{{ $dato->email }}"
+                                    data-DNI="{{ $dato->DNI }}">
                                     Editar
                                 </button>
-                                <form action="{{ route('clinicas.destroy', $clinica->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('datos.destroy', $dato->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-dark m-1 deleteClinicaBtn">Eliminar</button>
+                                    <button type="submit" class="btn btn-dark m-1 deleteDatoBtn">Eliminar</button>
                                 </form>
 
                             </div>
@@ -46,32 +46,38 @@
             </div>
             <!-- ****************************MODAL ************************** -->
 
-            <div class="modal fade" id="editClinicaModal" tabindex="-1" aria-labelledby="editClinicaLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="editDatoModal" tabindex="-1" aria-labelledby="editDatoLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form id="editClinicaForm" method="POST">
+                        <form id="editDatoForm" method="POST">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" id="clinicaId">
+                            <input type="hidden" id="datoId">
 
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editClinicaLabel">Editar Clínica</h5>
+                                <h5 class="modal-title" id="editDatoLabel">Editar Datos Personales</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-
                             <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="empresa" class="form-label">Empresa</label>
+                                    <input type="text" class="form-control" id="empresa" name="empresa">
+                                </div>
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidos" class="form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos">
                                 </div>
                                 <div class="mb-3">
                                     <label for="direccion" class="form-label">Dirección</label>
                                     <input type="text" class="form-control" id="direccion" name="direccion">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="NIF" class="form-label">NIF</label>
-                                    <input type="text" class="form-control" id="NIF" name="NIF">
+                                    <label for="DNI" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="DNI" name="DNI">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -99,7 +105,7 @@
         @endif
     </main>
     @include('layouts.footer')
-    <script src="{{ asset('js/clinicas.js') }}"></script>
+    <script src="{{ asset('js/datos.js') }}"></script>
 
 
 </body>
