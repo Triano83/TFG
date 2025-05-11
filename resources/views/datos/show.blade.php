@@ -26,7 +26,7 @@
                                     data-id="{{ $dato->id }}" data-empresa="{{ $dato->empresa }}" data-nombre="{{ $dato->nombre }}"
                                     data-apellidos="{{ $dato->apellidos }}" data-direccion="{{ $dato->direccion }}"
                                     data-telefono="{{ $dato->telefono }}" data-email="{{ $dato->email }}"
-                                    data-DNI="{{ $dato->DNI }}">
+                                    data-dni="{{ $dato->DNI }}">
                                     Editar
                                 </button>
                                 <form action="{{ route('datos.destroy', $dato->id) }}" method="POST" class="d-inline">
@@ -76,17 +76,19 @@
                                     <input type="text" class="form-control" id="direccion" name="direccion">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="DNI" class="form-label">DNI</label>
-                                    <input type="text" class="form-control" id="DNI" name="DNI">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="telefono" class="form-label">Teléfono</label>
-                                    <input type="text" class="form-control" id="telefono" name="telefono">
+                                    <label for="dni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="dni" name="dni">
                                 </div>
+
+
                             </div>
 
                             <div class="modal-footer">

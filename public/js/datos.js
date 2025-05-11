@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("direccion").value = this.dataset.direccion;
             document.getElementById("telefono").value = this.dataset.telefono;
             document.getElementById("email").value = this.dataset.email;
-            document.getElementById("DNI").value = this.dataset.DNI;
+            document.getElementById("dni").value = this.dataset.dni;
 
             let form = document.getElementById("editDatoForm");
             form.action = `/datos/${this.dataset.id}`;
