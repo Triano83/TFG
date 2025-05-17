@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DatoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         if (Auth::check()) {
@@ -22,17 +20,6 @@ class DatoController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -50,33 +37,17 @@ class DatoController extends Controller
         return redirect()->route('datos.index')->with('success', 'Datos agregados correctamente.');
     }
 
-
-    /**
-     * Display the specified resource.
-     */
     public function show()
     {
         if (Auth::check() && Auth::user()->admin) {
             $datos = Dato::all();
-            $isAdmin = Auth::user()->admin; // Definir la variable antes de enviarla a la vista
-            return view('datos.show', compact('datos', 'isAdmin')); // Pasar ambas variables
+            $isAdmin = Auth::user()->admin;
+            return view('datos.show', compact('datos', 'isAdmin'));
         } else {
             return redirect('/')->with('error', 'Acceso denegado.');
         }
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(dato $dato)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Dato $dato)
     {
         $request->validate([
@@ -89,15 +60,20 @@ class DatoController extends Controller
             'DNI' => 'required',
         ]);
 
-        $dato->update($request->all());
+        $dato->update ([
+            'empresa' => $request->empresa,
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'email' => $request->email,
+            'DNI' => $request->DNI,
+        ]);
+
 
         return redirect()->route('datos.show')->with('success', 'Datos actualizados correctamente.');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Dato $dato)
     {
         $dato->delete();

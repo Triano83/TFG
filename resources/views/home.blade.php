@@ -59,7 +59,8 @@
                             <p class="card-text">Agregar, borrar, modificar, consultar productos y precios</p>
                             <p class="card-text"><small class="text-muted">
                                     <button type="button" class="btn btn-dark m-2">Añadir </button>
-                                    <a href="{{ route('precios.show') }}"><button type="button" class="btn btn-dark m-2">Listado</button></a>
+                                    <a href="{{ route('precios.show') }}"><button type="button"
+                                            class="btn btn-dark m-2">Listado</button></a>
 
                                 </small></p>
                         </div>
