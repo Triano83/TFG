@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClinicaController;
 use App\Http\Controllers\DatoController;
 use App\Http\Controllers\PrecioController;
+use App\Http\Controllers\PreciosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,8 +30,4 @@ Route::get('/datos/show', [DatoController::class, 'show'])->name('datos.show');
 Route::put('/datos/{dato}', [DatoController::class, 'update'])->name('datos.update');
 Route::delete('/datos/{dato}', [DatoController::class, 'destroy'])->name('datos.destroy');
 
-//Precios
-Route::resource('/precios', App\Http\Controllers\PrecioController::class);
-Route::get('/precios/show', [PrecioController::class, 'show'])->name('precios.show');
-Route::put('/precios/{precio}', [PrecioController::class, 'update'])->name('precios.update');
-Route::delete('/precios/{precio}', [PrecioController::class, 'destroy'])->name('precios.destroy');
+// Lista de Precios

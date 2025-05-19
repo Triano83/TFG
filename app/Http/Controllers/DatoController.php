@@ -48,31 +48,16 @@ class DatoController extends Controller
         }
     }
 
-    public function update(Request $request, Dato $dato)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'empresa' => 'required',
-            'nombre' => 'required',
-            'apellidos' => 'required',
-            'direccion' => 'required',
-            'telefono' => 'required',
-            'email' => 'required|email',
-            'DNI' => 'required',
-        ]);
-
-        $dato->update ([
-            'empresa' => $request->empresa,
-            'nombre' => $request->nombre,
-            'apellidos' => $request->apellidos,
-            'direccion' => $request->direccion,
-            'telefono' => $request->telefono,
-            'email' => $request->email,
-            'DNI' => $request->DNI,
-        ]);
-
-
+        $dato = Dato::findOrFail($id);
+        $dato->update($request->all());
         return redirect()->route('datos.show')->with('success', 'Datos actualizados correctamente.');
+
     }
+
+
+
 
     public function destroy(Dato $dato)
     {
