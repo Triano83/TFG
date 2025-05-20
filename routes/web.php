@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClinicaController;
 use App\Http\Controllers\DatoController;
+use App\Http\Controllers\ListaController;
 use App\Http\Controllers\PrecioController;
 use App\Http\Controllers\PreciosController;
 
@@ -31,3 +32,8 @@ Route::put('/datos/{dato}', [DatoController::class, 'update'])->name('datos.upda
 Route::delete('/datos/{dato}', [DatoController::class, 'destroy'])->name('datos.destroy');
 
 // Lista de Precios
+
+Route::resource('/lista', App\Http\Controllers\ListaController::class);
+Route::get('/lista/show', [ListaController::class, 'show'])->name('lista.show');
+Route::put('/lista/{id}', [ListaController::class, 'update'])->name('lista.update');
+Route::delete('/lista/{id}', [ListaController::class, 'destroy'])->name('lista.destroy');
