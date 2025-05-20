@@ -49,7 +49,7 @@
             <div class="modal fade" id="editDatoModal" tabindex="-1" aria-labelledby="editDatoLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form id="editDatoForm" method="POST" action="{{ route('datos.update', $dato->id) }}">
+                        <form id="editDatoForm" method="POST" >
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="datoId">

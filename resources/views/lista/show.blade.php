@@ -44,7 +44,7 @@
         <div class="modal fade" id="editListaModal" tabindex="-1" aria-labelledby="editListaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="editListaForm" method="POST" action="{{ route('lista.update', $lista->id) }}">
+                    <form id="editListaForm" method="POST"  >
                         @csrf
                         @method('PUT')
                         <input type="hidden" id="listaId">
@@ -82,4 +82,4 @@
         @endif
     </main>
     @include('layouts.footer')
-    <script src="{{ asset('js/.js') }}"></script>
+    <script src="{{ asset('js/lista.js') }}"></script>

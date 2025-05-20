@@ -38,7 +38,7 @@ class ListaController extends Controller
     }
 
 
-    public function show(Lista $lista)
+    public function show()
     {
         if (Auth::check() && Auth::user()->admin) {
             $lista = Lista::all();
@@ -52,16 +52,13 @@ class ListaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'precio' => 'required',
-        ]);
+
 
         $lista = Lista::find($id);
         $lista->update($request->all());
 
-        return redirect()->route('lista.index')
-            ->with('success', 'Lista updated successfully.');
+        return redirect()->route('lista.show')
+            ->with('success', 'Lista actualizada.');
     }
 
 

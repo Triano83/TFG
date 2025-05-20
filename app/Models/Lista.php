@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lista extends Model
 {
-    //
+    protected $fillable = [
+        'nombre',
+        'precio',
+    ];
 }
