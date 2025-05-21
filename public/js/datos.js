@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     deleteDatoBtns.forEach((button) => {
         button.addEventListener("click", function (event) {
-            event.preventDefault(); // Evita el envío inmediato
+            event.preventDefault();
 
             if (confirm("¿Estás seguro de que deseas eliminar este dato?")) {
-                this.closest("form").submit(); // Envía el formulario si el usuario confirma
+                this.closest("form").submit(); 
             }
         });
     });

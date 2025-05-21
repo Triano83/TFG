@@ -9,12 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 
-
 class ClinicaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         if (Auth::check()) {
@@ -25,17 +22,9 @@ class ClinicaController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -51,9 +40,6 @@ class ClinicaController extends Controller
             ->with('success', 'Clinica created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show()
     {
         if (Auth::check() && Auth::user()->admin) {
@@ -66,17 +52,7 @@ class ClinicaController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(clinica $clinica)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, clinica $clinica)
     {
         $request->validate([
@@ -99,9 +75,6 @@ class ClinicaController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Clinica $clinica)
     {
         $clinica->delete();

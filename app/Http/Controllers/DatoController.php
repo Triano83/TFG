@@ -57,8 +57,6 @@ class DatoController extends Controller
     }
 
 
-
-
     public function destroy(Dato $dato)
     {
         $dato->delete();

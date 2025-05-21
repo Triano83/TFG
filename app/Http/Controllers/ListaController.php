@@ -65,8 +65,7 @@ class ListaController extends Controller
     public function destroy(Lista $lista)
     {
         $lista->delete();
-
-        return redirect()->route('lista.index')
-            ->with('success', 'Lista deleted successfully.');
+        return redirect()->route('lista.show')->with('success', 'Artículo eliminado correctamente.');
     }
+
 }

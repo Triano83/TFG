@@ -36,4 +36,4 @@ Route::delete('/datos/{dato}', [DatoController::class, 'destroy'])->name('datos.
 Route::resource('/lista', App\Http\Controllers\ListaController::class);
 Route::get('/lista/show', [ListaController::class, 'show'])->name('lista.show');
 Route::put('/lista/{id}', [ListaController::class, 'update'])->name('lista.update');
-Route::delete('/lista/{id}', [ListaController::class, 'destroy'])->name('lista.destroy');
+Route::delete('/lista/{lista}', [ListaController::class, 'destroy'])->name('lista.destroy');
