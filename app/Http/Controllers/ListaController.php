@@ -62,10 +62,17 @@ class ListaController extends Controller
     }
 
 
-    public function destroy(Lista $lista)
+    public function destroy($id)
     {
-        $lista->delete();
-        return redirect()->route('lista.show')->with('success', 'Artículo eliminado correctamente.');
+        $lista = Lista::find($id);
+
+        if ($lista) {
+            $lista->delete();
+            return redirect()->route('lista.show')->with('success', 'Artículo eliminado correctamente.');
+        } else {
+            return redirect()->route('lista.show')->with('error', 'Artículo no encontrado.');
+        }
     }
+
 
 }
