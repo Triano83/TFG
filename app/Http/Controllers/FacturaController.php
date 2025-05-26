@@ -18,12 +18,17 @@ class FacturaController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            return view('home', ['isAdmin' => $user->admin]);
+        if (Auth::check() && Auth::user()->admin) {
+            $facturas = Factura::all();
+            $listas = Lista::all();
+            $clinicas = clinica::all();
+            $datos = Dato::all();
+            $isAdmin = Auth::user()->admin;
+            return view('factura.index', compact('facturas', 'datos', 'clinicas', 'listas', 'isAdmin'));
         } else {
-            return redirect('/');
+            return redirect('/')->with('error', 'Acceso denegado.');
         }
+
     }
 
     public function create()
@@ -39,15 +44,7 @@ class FacturaController extends Controller
 
     public function show(Factura $factura)
     {
-        if (Auth::check() && Auth::user()->admin) {
-            $lista = Lista::all();
-            $clinica = clinica::all();
-            $dato = Dato::all();
-            $isAdmin = Auth::user()->admin;
-            return view('lista.show', compact('lista','dato','clinica', 'isAdmin'));
-        } else {
-            return redirect('/')->with('error', 'Acceso denegado.');
-        }
+
     }
 
     /**

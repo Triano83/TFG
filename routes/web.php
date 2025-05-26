@@ -37,3 +37,12 @@ Route::resource('/lista', App\Http\Controllers\ListaController::class);
 Route::get('/lista/show', [ListaController::class, 'show'])->name('lista.show');
 Route::put('/lista/{id}', [ListaController::class, 'update'])->name('lista.update');
 Route::delete('/lista/{id}', [ListaController::class, 'destroy'])->name('lista.destroy');
+
+// Factura
+Route::get('/factura', [App\Http\Controllers\FacturaController::class, 'index'])->name('factura.index');
+Route::get('/factura/create', [App\Http\Controllers\FacturaController::class, 'create'])->name('factura.create');
+Route::post('/factura', [App\Http\Controllers\FacturaController::class, 'store'])->name('factura.store');
+Route::get('/factura/{factura}', [App\Http\Controllers\FacturaController::class, 'show'])->name('factura.show');
+Route::get('/factura/{factura}/edit', [App\Http\Controllers\FacturaController::class, 'edit'])->name('factura.edit');
+Route::put('/factura/{factura}', [App\Http\Controllers\FacturaController::class, 'update'])->name('factura.update');
+Route::delete('/factura/{factura}', [App\Http\Controllers\FacturaController::class, 'destroy'])->name('factura.destroy');

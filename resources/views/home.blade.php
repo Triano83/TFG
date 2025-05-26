@@ -79,7 +79,8 @@
                                 <h5 class="card-title">Creacion de facturas</h5>
                                 <p class="card-text">Crear, modificar , borrar, y listar facturas</p>
                                 <p class="card-text"><small class="text-muted">
-                                        <button type="button" class="btn btn-dark m-2">Añadir </button>
+                                        <a href="{{ route('factura.index') }}"><button type="button" class="btn btn-dark m-2">Crear
+                                                Factura </button></a>
                                         <button type="button" class="btn btn-dark m-2">Listado</button>
                                     </small></p>
                             </div>
