@@ -148,7 +148,7 @@ Una vez que el servidor esté en marcha, navega a la URL local (ej. `http://127.
 
 Para comprender mejor cómo se relacionan las tablas en la base de datos de S.M. Dental, aquí tienes un esquema simplificado:
 
-```mermaid
+mermaid
 erDiagram
     USERS ||--o{ CLINICAS : "gestiona"
     USERS ||--o{ DATOS : "gestiona"
@@ -228,12 +228,5 @@ erDiagram
         timestamp updated_at
     }
 
-    # Nota: FACTURA_PRODUCTOS es conceptual aquí, ya que 'productos' es un campo TEXT en FACTURAS
-    # Si quisieras una relación N:M real, necesitarías una tabla pivote como:
-    # FACTURA_PRODUCTOS {
-    #     int factura_id FK
-    #     int lista_id FK (o producto_id)
-    #     int cantidad
-    #     decimal precio_unitario_facturado
-    # }
-```
+    
+
